@@ -1,9 +1,11 @@
 class Solution:
-    def removeElement(self, nums: List[int], val: int) -> int:
-        k = 0
+    def majorityElement(self, nums: List[int]) -> int:
+        count = defaultdict(int)
+        res = maxCount = 0
 
-        for i in range(len(nums)): 
-            if nums[i] != val: 
-                nums[k] = nums[i] 
-                k += 1
-        return k
+        for num in nums:
+            count[num] += 1
+            if maxCount < count[num]:
+                res = num
+                maxCount = count[num]
+        return res
